@@ -1,3 +1,6 @@
+# mono_caesar.py
+# Caeser-Verschlüsselung nach Monoalphabetischer Substitution
+
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 def adjust_Data(text, code):
@@ -18,20 +21,13 @@ def adjust_Data(text, code):
     '''
     text = text.lower()
 
-    while code > 26 or code < 0:
-        '''
-        Schleife um sicherzustellen,  dass der Angegebene Code-Schlüssel sich 
-        im Bereich zwischen 0 und 26 befindet.
-        '''
-        if code > 26: #für den Fall, dass der eingegebene Code größer als 26 ist
-            code -= 26
-        if code < 0: #für den Fall, dass der eingegebene Code kleiner als 26 ist
-            code += 26
-    
+    if code > 26 or code < 0:
+        code %= 26
+
     return text, code
 
 
-def caesar_Encode(input_text, code):
+def mono_caesar_Encode(input_text, code):
     '''
     Funktion, welche die Caesar-Verschlüsselung anwendet um einen Text zu 
     verschlüsseln.
@@ -73,7 +69,7 @@ def caesar_Encode(input_text, code):
 
     return encoded_text
 
-def caesar_Decode(encoded_text, code):
+def mono_caesar_Decode(encoded_text, code):
     '''
     Funktion umm einen mit der Caesar-Verschlüsselung verschlüsselten Text 
     wieder zu entschlüsseln. Der Code wird dafür benötigt.
@@ -119,8 +115,8 @@ def caesar_Decode(encoded_text, code):
 if __name__=='__main__':
     input_text = input('Geben sie einen Text ein: ')
     code = int(input('Geben sie nun ein um wie viele Zeichen der Text verschoben werden soll: '))
-    encoded_text = caesar_Encode(input_text,code)
-    decoded_text = caesar_Decode(encoded_text, code)
+    encoded_text = mono_caesar_Encode(input_text,code)
+    decoded_text = mono_caesar_Decode(encoded_text, code)
     print(input_text,'\n',code)
     print(encoded_text)
     print(decoded_text)
