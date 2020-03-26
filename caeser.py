@@ -74,6 +74,22 @@ def caesar_Encode(input_text, code):
     return encoded_text
 
 def caesar_Decode(encoded_text, code):
+    '''
+    Funktion umm einen mit der Caesar-Verschlüsselung verschlüsselten Text 
+    wieder zu entschlüsseln. Der Code wird dafür benötigt.
+
+    input:
+
+    encoded_text, code
+    encoded_text    (str)-->    Ein verschlüsselter Text
+    code            (int)-->    Code zur Verschiebung des Alphabets welcher zu 
+                                der Verschlüsselung gehört.
+
+    output:
+
+    decoded_text
+    decoded_text (str)-->   Der Entschlüsselte Text 
+    '''
     encoded_text, code = adjust_Data(encoded_text, code)
 
     replace_alphabet = alphabet[code:] + alphabet[:code]
@@ -101,7 +117,7 @@ def caesar_Decode(encoded_text, code):
 
 
 if __name__=='__main__':
-    input_text = input('Geben sie einen Text ein: ').lower()
+    input_text = input('Geben sie einen Text ein: ')
     code = int(input('Geben sie nun ein um wie viele Zeichen der Text verschoben werden soll: '))
     encoded_text = caesar_Encode(input_text,code)
     decoded_text = caesar_Decode(encoded_text, code)
