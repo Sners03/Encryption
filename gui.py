@@ -6,8 +6,15 @@ from tkinter import filedialog
 from tkinter import *
 
 
-def NewFile():
-    print("New File!")
+def load_Mono_Caeser():
+    print("mono_caesar")
+
+def load_Poly_Caeser():
+    print("poly_caesar")
+
+def load_vigenere():
+    print("poly_caesar")
+
 def OpenFile():
     root.filename =  filedialog.askopenfilename(initialdir = "/",
                                             title = "Select file",
@@ -15,8 +22,10 @@ def OpenFile():
                                                         ,("all files","*.*")))
 
     print(root.filename)
+
 def About():
     print("This is a simple example of a menu")
+
 
 if __name__ == '__main__':
     encoded = mc.mono_Caesar_Encode('Hallo Welt', 2)
@@ -27,9 +36,9 @@ if __name__ == '__main__':
     root.config(menu=menu)
     filemenu = Menu(menu)
     menu.add_cascade(label="File", menu=filemenu)
-    filemenu.add_command(label="Caeser-Verschlüsselung nach Monoalphabetischer Substitution", command=NewFile)
-    filemenu.add_command(label="Caeser-Verschlüsselung nach Polyalphabetischer Substitution", command=NewFile)
-    filemenu.add_command(label="Vigenére-Verschlüsselung ", command=OpenFile)
+    filemenu.add_command(label="Caeser-Verschlüsselung nach Monoalphabetischer Substitution", command=load_Mono_Caeser)
+    filemenu.add_command(label="Caeser-Verschlüsselung nach Polyalphabetischer Substitution", command=load_Poly_Caeser)
+    filemenu.add_command(label="Vigenére-Verschlüsselung ", command=load_vigenere)
     filemenu.add_separator()
     filemenu.add_command(label="Exit", command=root.quit)
 
