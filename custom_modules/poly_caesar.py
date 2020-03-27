@@ -4,7 +4,7 @@
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 def get_replace_alphabet(code):
-    '''
+    ''' 
     Hilfsfunktion um das Alphabet zu verschieben.
 
     input:

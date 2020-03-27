@@ -5,7 +5,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 # c = Zeichen ((zahl(K)+zahl(e)) Modulo 26)
 
-def vigenere_Encode(input_text, key):
+def vigenere_Encode(input_text, key):  
     '''
     Funktion, welche die Vigenére-Verschlüsselung anwendet um einen Text zu 
     verschlüsseln.
