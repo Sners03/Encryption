@@ -87,7 +87,7 @@ def poly_Caesar_Decode(encoded_text):
             new_key = alphabet[key_index]
             decoded_text += new_key
         except Exception:
-            decoded_text += i
+            decoded_text += encoded_text[i]
     
     return decoded_text
 
