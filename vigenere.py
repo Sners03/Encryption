@@ -5,7 +5,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 # c = Zeichen ((zahl(K)+zahl(e)) Modulo 26)
 
-def vignere_Encode(input_text, key):
+def vigenere_Encode(input_text, key):
 
     key_length = len(key)
     key_pos = 0
@@ -29,7 +29,7 @@ def vignere_Encode(input_text, key):
 
     return encoded_text
 
-def vignere_Decode(encoded_text, key):
+def vigenere_Decode(encoded_text, key):
 
     key_length = len(key)
     key_pos = 0
@@ -39,7 +39,7 @@ def vignere_Decode(encoded_text, key):
         try:
 
             key_char = key[key_pos]
-            decoded_char_pos = (alphabet.index(i) + alphabet.index(key_char)) % 26
+            decoded_char_pos = (26 + alphabet.index(i) - alphabet.index(key_char)) % 26
 
             decoded_text += alphabet[decoded_char_pos]
 
@@ -58,6 +58,8 @@ if __name__ == '__main__':
     input_text = input('Geben sie einen Text ein: ').lower()
     key = input('Geben sie ihr schlüsselwort ein: ').lower()
 
-    encoded_text = vignere_Encode(input_text, key)
+    encoded_text = vigenere_Encode(input_text, key)
+    decoded_text = vigenere_Decode(encoded_text, key)
 
     print(encoded_text)
+    print(decoded_text)
