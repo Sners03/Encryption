@@ -24,8 +24,8 @@ def get_replace_alphabet(code):
 
 def poly_Caesar_Encode(input_text):
     '''
-    Funktion, welche die polyalphabetische Caesar-Verschlüsselung anwendet um einen Text zu 
-    verschlüsseln.
+    Funktion, welche die polyalphabetische Caesar-Verschlüsselung anwendet um 
+    einen Text zu verschlüsseln.
 
     input:
 
