@@ -29,6 +29,30 @@ def vignere_Encode(input_text, key):
 
     return encoded_text
 
+def vignere_Decode(encoded_text, key):
+
+    key_length = len(key)
+    key_pos = 0
+    decoded_text = ''
+
+    for i in encoded_text:
+        try:
+
+            key_char = key[key_pos]
+            decoded_char_pos = (alphabet.index(i) + alphabet.index(key_char)) % 26
+
+            decoded_text += alphabet[decoded_char_pos]
+
+        except Exception:
+            decoded_text += i
+
+        if key_pos != key_length-1:
+            key_pos += 1
+        else:
+            key_pos = 0
+
+    return decoded_text
+
 if __name__ == '__main__':
 
     input_text = input('Geben sie einen Text ein: ').lower()
