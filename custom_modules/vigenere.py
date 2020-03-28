@@ -22,6 +22,7 @@ def vigenere_Encode(input_text, key):
     encoded_text (str)-->   Der Verschlüsselte Text nach der 
                             Vigenére-Verschlüsselung
     '''
+    input_text = input_text.lower()
     key_length = len(key)
     key_pos = 0
     encoded_text = ''

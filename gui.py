@@ -5,12 +5,13 @@ from custom_modules import vigenere as vig
 from tkinter import filedialog
 from tkinter import *
 
-def create_gui():
+def create_menu():
 
     menu = Menu(root)
     root.config(menu=menu)
     filemenu = Menu(menu)
     menu.add_cascade(label="File", menu=filemenu)
+
     filemenu.add_command(
         label="Caeser-Verschlüsselung nach Monoalphabetischer Substitution",
         command=load_Mono_Caeser)
@@ -18,12 +19,13 @@ def create_gui():
         label="Caeser-Verschlüsselung nach Polyalphabetischer Substitution",
         command=load_Poly_Caeser)
     filemenu.add_command(label="Vigenére-Verschlüsselung ", command=load_vigenere)
+    
     filemenu.add_separator()
     filemenu.add_command(label="Exit", command=root.quit)
 
-    helpmenu = Menu(menu)
-    menu.add_cascade(label="Help", menu=helpmenu)
-    helpmenu.add_command(label="About...", command=About)
+    #helpmenu = Menu(menu)
+    #menu.add_cascade(label="Help", menu=helpmenu)
+    #helpmenu.add_command(label="About...", command=About)
 
     root.mainloop()
 
@@ -300,21 +302,21 @@ def use_Poly_Caesar_Decode():
 
 #Vigenére Code use
 def use_Vigenere_Encode():
-    text = mono_Caesar_Entry_1.get()
-    key = mono_Caesar_Entry_2.get()
+    text = vigenere_Entry_1.get()
+    key = vigenere_Entry_2.get()
 
     encoded_text = vig.vigenere_Encode(text, key)
 
-    mono_Caesar_Label_4.config(text=encoded_text)
+    vigenere_Label_4.config(text=encoded_text)
     print(encoded_text)
 
 def use_Vigenere_Decode():
-    text = mono_Caesar_Entry_3.get()
-    key = mono_Caesar_Entry_4.get()
+    text = vigenere_Entry_3.get()
+    key = vigenere_Entry_4.get()
 
-    decoded_text = vig.vigenere_Decode
+    decoded_text = vig.vigenere_Decode(text, key)
 
-    mono_Caesar_Label_8.config(text=decoded_text)
+    vigenere_Label_8.config(text=decoded_text)
     print(decoded_text)
 
 #mono Caesar Entry clear
@@ -483,7 +485,7 @@ Polyalphabetischer Substitution''',
     #Mono Caesar is loaded first
     create_Mono_Caesar()
 
-    create_gui()
+    create_menu()
 
     
     
