@@ -26,6 +26,8 @@ def create_gui():
     root.mainloop()
 
 def create_Mono_Caesar():
+    mono_Caesar_Label_head.grid(row=0, column=1)
+
     mono_Caesar_Label_1.grid(row=1, column=0)
     mono_Caesar_Label_2.grid(row=1, column=1)
     mono_Caesar_Label_3.grid(row=1, column=2)
@@ -33,14 +35,21 @@ def create_Mono_Caesar():
 
     mono_Caesar_Entry_1.grid(row=2, column=0)
     mono_Caesar_Entry_2.grid(row=2, column=1)
-    
+
     if mono_Caesar_Entry_1.get() == '':
         mono_Caesar_Entry_1.insert(0, 'Hallo Welt!')
+    if mono_Caesar_Entry_2.get() == '':
+        mono_Caesar_Entry_2.insert(0, '2')
     
 
 def destroy_Mono_Caesar():
-    mono_Caesar_Entry_1.grid_remove()
     mono_Caesar_Label_1.grid_remove()
+    mono_Caesar_Label_2.grid_remove()
+    mono_Caesar_Label_3.grid_remove()
+    mono_Caesar_Label_4.grid_remove()
+
+    mono_Caesar_Entry_1.grid_remove()
+    mono_Caesar_Entry_2.grid_remove()
 
 def create_Poly_Caesar():
     pass
@@ -91,6 +100,16 @@ def load_vigenere():
 
     root.state = 2
 
+def use_mono_Caesar_Encode():
+    text = mono_Caesar_Entry_1.get()
+    key = int(mono_Caesar_Entry_2.get())
+    
+
+    mono_Caesar_Label_4.config(text=encoded_text)
+
+def use_mono_Caesar_Decode():
+    pass
+
 def OpenFile():
     root.filename =  filedialog.askopenfilename(initialdir = "/",
                                             title = "Select file",
@@ -108,6 +127,7 @@ if __name__ == '__main__':
 
     root.state = 0
 
+    mono_Caesar_Label_head = Label(root, text='Caeser-Verschlüsselung nach Monoalphabetischer Substitution')
     mono_Caesar_Label_1 = Label(root, text='lesbarer Text')
     mono_Caesar_Label_2 = Label(root, text='Schlüsselzahl')
     mono_Caesar_Label_3 = Label(root, text='verschlüsselter Text')
