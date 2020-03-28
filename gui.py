@@ -30,20 +30,43 @@ def create_gui():
 def create_Mono_Caesar():
     mono_Caesar_Label_head.grid(row=0, column=1)
 
-    mono_Caesar_Label_1.grid(row=1, column=0)
-    mono_Caesar_Label_2.grid(row=1, column=1)
-    mono_Caesar_Label_3.grid(row=1, column=2)
-    mono_Caesar_Label_4.grid(row=2, column=2)
+    # Encoding part
+    mono_Caesar_Label_subhead_1.grid(row=1, column=0)
 
-    mono_Caesar_Entry_1.grid(row=2, column=0)
-    mono_Caesar_Entry_2.grid(row=2, column=1)
+    mono_Caesar_Label_1.grid(row=2, column=0)
+    mono_Caesar_Label_2.grid(row=2, column=1)
+    mono_Caesar_Label_3.grid(row=2, column=2)
+    mono_Caesar_Label_4.grid(row=3, column=2)
 
-    mono_Caesar_Button_1.grid(row=3, column=0)
-    mono_Caesar_Button_2.grid(row=3, column=1)
-    mono_Caesar_Button_3.grid(row=3, column=2)
+    mono_Caesar_Entry_1.grid(row=3, column=0)
+    mono_Caesar_Entry_2.grid(row=3, column=1)
+
+    mono_Caesar_Button_1.grid(row=4, column=0)
+    mono_Caesar_Button_2.grid(row=4, column=1)
+    mono_Caesar_Button_3.grid(row=4, column=2)
+
+    placeholder_Label.grid(row=5, column=0)
+
+    # Decoding part
+    mono_Caesar_Label_subhead_2.grid(row=6, column=0)
+
+    mono_Caesar_Label_5.grid(row=7, column=0)
+    mono_Caesar_Label_6.grid(row=7, column=1)
+    mono_Caesar_Label_7.grid(row=7, column=2)
+    mono_Caesar_Label_8.grid(row=8, column=2)
+
+    mono_Caesar_Entry_3.grid(row=8, column=0)
+    mono_Caesar_Entry_4.grid(row=8, column=1)
+
+    mono_Caesar_Button_4.grid(row=9, column=0)
+    mono_Caesar_Button_5.grid(row=9, column=1)
+    mono_Caesar_Button_6.grid(row=9, column=2)
 
 def destroy_Mono_Caesar():
     mono_Caesar_Label_head.grid_remove()
+
+    # Encoding part
+    mono_Caesar_Label_subhead_1.grid_remove()
 
     mono_Caesar_Label_1.grid_remove()
     mono_Caesar_Label_2.grid_remove()
@@ -56,6 +79,23 @@ def destroy_Mono_Caesar():
     mono_Caesar_Button_1.grid_remove()
     mono_Caesar_Button_2.grid_remove()
     mono_Caesar_Button_3.grid_remove()
+
+    placeholder_Label.grid_remove()
+
+    # Decoding part
+    mono_Caesar_Label_subhead_2.grid_remove()
+
+    mono_Caesar_Label_5.grid_remove()
+    mono_Caesar_Label_6.grid_remove()
+    mono_Caesar_Label_7.grid_remove()
+    mono_Caesar_Label_8.grid_remove()
+
+    mono_Caesar_Entry_3.grid_remove()
+    mono_Caesar_Entry_4.grid_remove()
+
+    mono_Caesar_Button_4.grid_remove()
+    mono_Caesar_Button_5.grid_remove()
+    mono_Caesar_Button_6.grid_remove()
 
 def create_Poly_Caesar():
     pass
@@ -113,15 +153,28 @@ def use_mono_Caesar_Encode():
     encoded_text = mc.mono_Caesar_Encode(text,key)
 
     mono_Caesar_Label_4.config(text=encoded_text)
+    print(encoded_text)
 
 def use_mono_Caesar_Decode():
-    pass
+    text = mono_Caesar_Entry_3.get()
+    key = int(mono_Caesar_Entry_4.get())
+
+    decoded_text = mc.mono_Caesar_Decode(text,key)
+
+    mono_Caesar_Label_8.config(text=decoded_text)
+    print(decoded_text)
 
 def clear_Entry_1():
     mono_Caesar_Entry_1.delete(0,'end')
 
 def clear_Entry_2():
     mono_Caesar_Entry_2.delete(0,'end')
+
+def clear_Entry_3():
+    mono_Caesar_Entry_3.delete(0,'end')
+
+def clear_Entry_4():
+    mono_Caesar_Entry_4.delete(0,'end')
 
 def OpenFile():
     root.filename =  filedialog.askopenfilename(initialdir = "/",
@@ -140,12 +193,18 @@ if __name__ == '__main__':
 
     root.state = 0
 
+    placeholder_Label = Label(root,  text=' ')
+
     mono_Caesar_Label_head = Label(root, 
-        text='Caeser-Verschlüsselung nach Monoalphabetischer Substitution')
+        text='''  Caeser-Verschlüsselung nach 
+Monoalphabetischer Substitution''',
+        font=("Courier", 11))
+    mono_Caesar_Label_subhead_1 = Label(root,   text='Verschlüsselung',
+                                                font=("Courier", 10))
     mono_Caesar_Label_1 = Label(root, text='lesbarer Text')
     mono_Caesar_Label_2 = Label(root, text='Schlüsselzahl')
     mono_Caesar_Label_3 = Label(root, text='verschlüsselter Text')
-    mono_Caesar_Label_4 = Label(root, text='ijcnnq ygnv!')
+    mono_Caesar_Label_4 = Label(root, text='jcnnq ygnv!')
 
     mono_Caesar_Entry_1 = Entry(root)
     mono_Caesar_Entry_2 = Entry(root)
@@ -157,8 +216,28 @@ if __name__ == '__main__':
     mono_Caesar_Button_3 = Button(root, text="anwenden", 
                                         command=use_mono_Caesar_Encode)
 
+    mono_Caesar_Label_subhead_2 = Label(root,   text='Entschlüsselung',
+                                                font=("Courier", 10))    
+    mono_Caesar_Label_5 = Label(root, text='verschlüsselter Text')
+    mono_Caesar_Label_6 = Label(root, text='Schlüsselzahl')
+    mono_Caesar_Label_7 = Label(root, text='lesbarer Text')
+    mono_Caesar_Label_8 = Label(root, text='hallo Welt!')
+
+    mono_Caesar_Entry_3 = Entry(root)
+    mono_Caesar_Entry_4 = Entry(root)
+
+    mono_Caesar_Button_4 = Button(root, text="Eingabefeld leeren",
+                                        command=clear_Entry_3)
+    mono_Caesar_Button_5 = Button(root, text="Eingabefeld leeren",
+                                        command=clear_Entry_4)
+    mono_Caesar_Button_6 = Button(root, text="anwenden", 
+                                        command=use_mono_Caesar_Decode)
+
 
     #Mono Caeser is loaded first
     create_Mono_Caesar()
 
     create_gui()
+
+    
+    
