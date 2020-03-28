@@ -64,6 +64,7 @@ def vigenere_Decode(encoded_text, key):
     decoded_text
     decoded_text (str)-->   Der Entschlüsselte Text 
     '''
+    encoded_text = encoded_text.lower()
     key_length = len(key)
     key_pos = 0
     decoded_text = ''
