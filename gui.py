@@ -25,32 +25,71 @@ def create_gui():
 
     root.mainloop()
 
-def get_state():
-    return root.state
-
 def create_Mono_Caesar():
-    mono_Caesar_Entry_1.grid(row=1, column=1)
+    mono_Caesar_Label_1.grid(row=1, column=0)
+    mono_Caesar_Label_2.grid(row=1, column=1)
+    mono_Caesar_Label_3.grid(row=1, column=2)
+    mono_Caesar_Label_4.grid(row=2, column=2)
+
+    mono_Caesar_Entry_1.grid(row=2, column=0)
+    mono_Caesar_Entry_2.grid(row=2, column=1)
+    
+    if mono_Caesar_Entry_1.get() == '':
+        mono_Caesar_Entry_1.insert(0, 'Hallo Welt!')
+    
 
 def destroy_Mono_Caesar():
     mono_Caesar_Entry_1.grid_remove()
+    mono_Caesar_Label_1.grid_remove()
+
+def create_Poly_Caesar():
+    pass
+
+def destroy_Poly_Caesar():
+    pass
+
+def create_Vigenere():
+    pass
+
+def destroy_Vigenere():
+    pass
 
 
 def load_Mono_Caeser():
-    create_Mono_Caesar()
+    if root.state == 0:
+        pass
+    if root.state == 1:
+        destroy_Poly_Caesar()
+        create_Mono_Caesar()
+    if root.state == 2:
+        destroy_Vigenere()
+        create_Mono_Caesar()
+
     root.state = 0
 
-    print(root.state)
-    print("mono_caesar")
-
 def load_Poly_Caeser():
-    destroy_Mono_Caesar()
+    if root.state == 0:
+        destroy_Mono_Caesar()
+        create_Poly_Caesar()
+    if root.state == 1:
+        pass
+    if root.state == 2:
+        destroy_Vigenere()
+        create_Poly_Caesar()
+
     root.state = 1
 
-    print(root.state)
-    print("poly_caesar")
-
 def load_vigenere():
-    print("vigenere")
+    if root.state == 0:
+        destroy_Mono_Caesar()
+        create_Vigenere()
+    if root.state == 1:
+        destroy_Poly_Caesar()
+        create_Vigenere()
+    if root.state == 2:
+        pass
+
+    root.state = 2
 
 def OpenFile():
     root.filename =  filedialog.askopenfilename(initialdir = "/",
@@ -69,6 +108,16 @@ if __name__ == '__main__':
 
     root.state = 0
 
+    mono_Caesar_Label_1 = Label(root, text='lesbarer Text')
+    mono_Caesar_Label_2 = Label(root, text='Schlüsselzahl')
+    mono_Caesar_Label_3 = Label(root, text='verschlüsselter Text')
+    mono_Caesar_Label_4 = Label(root, text='ijcnnq ygnv!')
+
     mono_Caesar_Entry_1 = Entry(root)
+    mono_Caesar_Entry_2 = Entry(root)
+
+
+    #Mono Caeser is loaded first
+    create_Mono_Caesar()
 
     create_gui()
