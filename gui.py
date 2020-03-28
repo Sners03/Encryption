@@ -156,10 +156,74 @@ def destroy_Poly_Caesar():
     poly_Caesar_Button_4.grid_remove()
 
 def create_Vigenere():
-    pass
+    vigenere_Label_head.grid(row=0, column=1)
+
+    # Encoding part
+    vigenere_Label_subhead_1.grid(row=1, column=0)
+
+    vigenere_Label_1.grid(row=2, column=0)
+    vigenere_Label_2.grid(row=2, column=1)
+    vigenere_Label_3.grid(row=2, column=2)
+    vigenere_Label_4.grid(row=3, column=2)
+
+    vigenere_Entry_1.grid(row=3, column=0)
+    vigenere_Entry_2.grid(row=3, column=1)
+
+    vigenere_Button_1.grid(row=4, column=0)
+    vigenere_Button_2.grid(row=4, column=1)
+    vigenere_Button_3.grid(row=4, column=2)
+
+    placeholder_Label.grid(row=5, column=0)
+
+    # Decoding part
+    vigenere_Label_subhead_2.grid(row=6, column=0)
+
+    vigenere_Label_5.grid(row=7, column=0)
+    vigenere_Label_6.grid(row=7, column=1)
+    vigenere_Label_7.grid(row=7, column=2)
+    vigenere_Label_8.grid(row=8, column=2)
+
+    vigenere_Entry_3.grid(row=8, column=0)
+    vigenere_Entry_4.grid(row=8, column=1)
+
+    vigenere_Button_4.grid(row=9, column=0)
+    vigenere_Button_5.grid(row=9, column=1)
+    vigenere_Button_6.grid(row=9, column=2)
 
 def destroy_Vigenere():
-    pass
+    vigenere_Label_head.grid_remove()
+
+    # Encoding part
+    vigenere_Label_subhead_1.grid_remove()
+
+    vigenere_Label_1.grid_remove()
+    vigenere_Label_2.grid_remove()
+    vigenere_Label_3.grid_remove()
+    vigenere_Label_4.grid_remove()
+
+    vigenere_Entry_1.grid_remove()
+    vigenere_Entry_2.grid_remove()
+
+    vigenere_Button_1.grid_remove()
+    vigenere_Button_2.grid_remove()
+    vigenere_Button_3.grid_remove()
+
+    placeholder_Label.grid_remove()
+
+    # Decoding part
+    vigenere_Label_subhead_2.grid_remove()
+
+    vigenere_Label_5.grid_remove()
+    vigenere_Label_6.grid_remove()
+    vigenere_Label_7.grid_remove()
+    vigenere_Label_8.grid_remove()
+
+    vigenere_Entry_3.grid_remove()
+    vigenere_Entry_4.grid_remove()
+
+    vigenere_Button_4.grid_remove()
+    vigenere_Button_5.grid_remove()
+    vigenere_Button_6.grid_remove()
 
 
 def load_Mono_Caeser():
@@ -234,7 +298,26 @@ def use_Poly_Caesar_Decode():
     poly_Caesar_Label_6.config(text=decoded_text)
     print(decoded_text)
 
+#Vigenére Code use
+def use_Vigenere_Encode():
+    text = mono_Caesar_Entry_1.get()
+    key = mono_Caesar_Entry_2.get()
 
+    encoded_text = vig.vigenere_Encode(text, key)
+
+    mono_Caesar_Label_4.config(text=encoded_text)
+    print(encoded_text)
+
+def use_Vigenere_Decode():
+    text = mono_Caesar_Entry_3.get()
+    key = mono_Caesar_Entry_4.get()
+
+    decoded_text = vig.vigenere_Decode
+
+    mono_Caesar_Label_8.config(text=decoded_text)
+    print(decoded_text)
+
+#mono Caesar Entry clear
 def mono_Clear_Entry_1():
     mono_Caesar_Entry_1.delete(0,'end')
 
@@ -247,11 +330,25 @@ def mono_Clear_Entry_3():
 def mono_Clear_Entry_4():
     mono_Caesar_Entry_4.delete(0,'end')
 
+#poly Caesar Entry clear
 def poly_Clear_Entry_1():
-    mono_Caesar_Entry_1.delete(0,'end')
+    poly_Caesar_Entry_1.delete(0,'end')
 
 def poly_Clear_Entry_2():
-    mono_Caesar_Entry_2.delete(0,'end')
+    poly_Caesar_Entry_2.delete(0,'end')
+
+#Vigenére Entry clear
+def vigenere_Clear_Entry_1():
+    vigenere_Entry_1.delete(0,'end')
+
+def vigenere_Clear_Entry_2():
+    vigenere_Entry_2.delete(0,'end')
+
+def vigenere_Clear_Entry_3():
+    vigenere_Entry_3.delete(0,'end')
+
+def vigenere_Clear_Entry_4():
+    vigenere_Entry_4.delete(0,'end')
 
 def OpenFile():
     root.filename =  filedialog.askopenfilename(initialdir = "/",
@@ -343,6 +440,45 @@ Polyalphabetischer Substitution''',
                                         command=poly_Clear_Entry_2)
     poly_Caesar_Button_4 = Button(root, text="anwenden", 
                                         command=use_Poly_Caesar_Decode)
+
+    #Vigenére
+    #Encode
+    vigenere_Label_head = Label(root, 
+        text='''  Vigenére-Verschlüsselung''',
+        font=("Courier", 11))
+    vigenere_Label_subhead_1 = Label(root,   text='Verschlüsselung',
+                                                font=("Courier", 10))
+    vigenere_Label_1 = Label(root, text='lesbarer Text')
+    vigenere_Label_2 = Label(root, text='Schlüsselwort')
+    vigenere_Label_3 = Label(root, text='verschlüsselter Text')
+    vigenere_Label_4 = Label(root, text='jcnnq ygnv!')
+
+    vigenere_Entry_1 = Entry(root)
+    vigenere_Entry_2 = Entry(root)
+
+    vigenere_Button_1 = Button(root, text="Eingabefeld leeren",
+                                        command=vigenere_Clear_Entry_1)
+    vigenere_Button_2 = Button(root, text="Eingabefeld leeren",
+                                        command=vigenere_Clear_Entry_2)
+    vigenere_Button_3 = Button(root, text="anwenden", 
+                                        command=use_Vigenere_Encode)
+    #Decode
+    vigenere_Label_subhead_2 = Label(root,   text='Entschlüsselung',
+                                                font=("Courier", 10))    
+    vigenere_Label_5 = Label(root, text='verschlüsselter Text')
+    vigenere_Label_6 = Label(root, text='Schlüsselwort')
+    vigenere_Label_7 = Label(root, text='lesbarer Text')
+    vigenere_Label_8 = Label(root, text='hallo welt!')
+
+    vigenere_Entry_3 = Entry(root)
+    vigenere_Entry_4 = Entry(root)
+
+    vigenere_Button_4 = Button(root, text="Eingabefeld leeren",
+                                        command=vigenere_Clear_Entry_3)
+    vigenere_Button_5 = Button(root, text="Eingabefeld leeren",
+                                        command=vigenere_Clear_Entry_4)
+    vigenere_Button_6 = Button(root, text="anwenden", 
+                                        command=use_Vigenere_Decode)
 
     #Mono Caesar is loaded first
     create_Mono_Caesar()
