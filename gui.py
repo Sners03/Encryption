@@ -421,7 +421,7 @@ Polyalphabetischer Substitution''',
                                                 font=("Courier", 10))
     poly_Caesar_Label_1 = Label(root, text='lesbarer Text')
     poly_Caesar_Label_2 = Label(root, text='verschlüsselter Text')
-    poly_Caesar_Label_3 = Label(root, text='hbnos cltc!')
+    poly_Caesar_Label_3 = Label(root, text='icopt dmud!')
 
     poly_Caesar_Entry_1 = Entry(root)
 
