@@ -18,7 +18,7 @@ def get_replace_alphabet(code):
     '''
     if code > 26:
         code %= 26
-    replace_alphabet = alphabet[code:] + alphabet[:code]
+    replace_alphabet = alphabet[code+1:] + alphabet[:code+1]
 
     return replace_alphabet
 
